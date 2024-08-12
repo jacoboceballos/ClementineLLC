@@ -1,0 +1,19 @@
+.toolbar {
+  background-color: #2c3e50; /* Dark Blue */
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.toolbar a {
+  color: #ecf0f1; /* Light Color */
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px;
+  transition: color 0.3s;
+}
+
+.toolbar a:hover {
+  color: #3498db; /* Light Blue */
+}
+
