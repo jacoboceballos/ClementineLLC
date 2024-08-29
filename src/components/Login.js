@@ -18,7 +18,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:5000/login', credentials);
+      const response = await axios.post('https://backendclementine.azurewebsites.net/login', credentials);
       if (response.data.success) {
         alert('Login successful');
         navigate('/home');  // Redirect to home page after successful login
@@ -58,4 +58,3 @@ function Login() {
 }
 
 export default Login;
-
