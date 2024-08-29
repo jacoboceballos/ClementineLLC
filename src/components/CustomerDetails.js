@@ -10,12 +10,15 @@ function CustomerDetails() {
   const [dates, setDates] = useState([]);
   const [selectedDateDetails, setSelectedDateDetails] = useState(null);
 
+  // Base URL for the backend API
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://backendclementine.azurewebsites.net';
+
   useEffect(() => {
     const fetchCustomer = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5000/customer/${id}`);
+        const response = await axios.get(`${API_BASE_URL}/customer/${id}`);
         setCustomer(response.data);
-        const datesResponse = await axios.get(`http://127.0.0.1:5000/customer/${id}/dates`);
+        const datesResponse = await axios.get(`${API_BASE_URL}/customer/${id}/dates`);
         setDates(datesResponse.data);
       } catch (error) {
         console.error('Error fetching customer data:', error);
@@ -23,11 +26,11 @@ function CustomerDetails() {
       }
     };
     fetchCustomer();
-  }, [id]);
+  }, [id, API_BASE_URL]);
 
   const handleDateClick = async (dateId) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:5000/date/${dateId}/details`);
+      const response = await axios.get(`${API_BASE_URL}/date/${dateId}/details`);
       setSelectedDateDetails(response.data.purchase_date_details);
     } catch (error) {
       console.error('Error fetching date details:', error);
@@ -38,7 +41,7 @@ function CustomerDetails() {
   const handleEditCustomer = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://127.0.0.1:5000/customer/${customer.CustomerID}`, customer);
+      await axios.put(`${API_BASE_URL}/customer/${customer.CustomerID}`, customer);
       alert('Customer updated successfully');
     } catch (error) {
       console.error('Error updating customer:', error);
@@ -52,7 +55,7 @@ function CustomerDetails() {
 
   const handleDeleteDate = async (dateId) => {
     try {
-      const response = await axios.delete(`http://127.0.0.1:5000/date/${dateId}`);
+      const response = await axios.delete(`${API_BASE_URL}/date/${dateId}`);
       if (response.data.success) {
         alert('Date deleted successfully');
         setDates(dates.filter(date => date.PurchaseDateID !== dateId));
@@ -125,4 +128,3 @@ function CustomerDetails() {
 }
 
 export default CustomerDetails;
-
