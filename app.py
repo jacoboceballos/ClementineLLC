@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://proud-smoke-06bf8c30f.5.azurestaticapps.net"}})
 
 from routes import main as routes_blueprint
 app.register_blueprint(routes_blueprint)
