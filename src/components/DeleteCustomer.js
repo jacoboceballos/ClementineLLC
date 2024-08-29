@@ -9,7 +9,7 @@ function DeleteCustomer() {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`http://127.0.0.1:5000/customer/${id}`);
+      const response = await axios.delete(`https://backendclementine.azurewebsites.net/customer/${id}`);
       if (response.data.success) {
         setIsDeleted(true);
         alert('Customer deleted successfully');
@@ -39,4 +39,3 @@ function DeleteCustomer() {
 }
 
 export default DeleteCustomer;
-

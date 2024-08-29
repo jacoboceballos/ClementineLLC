@@ -72,7 +72,7 @@ function AddCustomer() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:5000/add-customer', customer);
+      const response = await axios.post('https://backendclementine.azurewebsites.net/add-customer', customer);
       if (response.data.success) {
         alert('Customer added successfully');
         navigate('/home');
@@ -142,4 +142,3 @@ function AddCustomer() {
 }
 
 export default AddCustomer;
-

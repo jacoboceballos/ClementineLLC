@@ -11,7 +11,7 @@ function CustomerSearch() {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get('http://127.0.0.1:5000/customers', { params: { query } });
+      const response = await axios.get('https://backendclementine.azurewebsites.net/customers', { params: { query } });
       setCustomers(response.data);
     } catch (error) {
       console.error('Error during customer search:', error);
@@ -24,7 +24,7 @@ function CustomerSearch() {
     // Fetch matching customers as the user types
     if (e.target.value) {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/customers', { params: { query: e.target.value } });
+        const response = await axios.get('https://backendclementine.azurewebsites.net/customers', { params: { query: e.target.value } });
         setCustomers(response.data);
       } catch (error) {
         console.error('Error fetching customers:', error);
@@ -67,4 +67,3 @@ function CustomerSearch() {
 }
 
 export default CustomerSearch;
-
